@@ -12,14 +12,14 @@ const Row = (props) => {
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(props.fetchUrl);
-      console.log(request.data.results);
+      // console.log(request.data.results);
       setMovies(request.data.results);
       return request;
     }
     fetchData();
   }, [props.fetchUrl]);
 
-  console.table(movies);
+  // console.table(movies);
 
   return (
     <div className="row">
@@ -30,9 +30,11 @@ const Row = (props) => {
 
         {movies.map((movie) => (
           <img
-            className="row_poster"
+            className={`row_poster ${props.isLargeRow && "row_posterLarge"}`}
             key={movie.id}
-            src={`${baseUrl}${movie.poster_path}`}
+            src={`${baseUrl}${
+              props.isLargeRow ? movie.poster_path : movie.backdrop_path
+            }`}
             alt={movie.name}
           />
         ))}
