@@ -11,7 +11,6 @@ const Row = (props) => {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
 
-  //  A Snippet of Code which runs based on a specific condition/variable
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(props.fetchUrl);
